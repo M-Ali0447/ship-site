@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⛵ Kemada Sayohat - Premium Dengiz Safarlari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0f4c75;
+            --secondary-blue: #3282b8;
+            --accent-gold: #ffb740;
+            --light-blue: #bbe1fa;
+            --dark-blue: #1b262c;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue), var(--light-blue));
+            background-attachment: fixed;
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 76, 117, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo h2 {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .nav-logo i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--accent-gold);
+            color: var(--dark-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 100px 0 50px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button.primary {
+            background: var(--accent-gold);
+            color: var(--dark-blue);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--accent-gold);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Fleet Section */
+        .fleet-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ship-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .ship-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .ship-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .ship-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .price-amount {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Contact Section */
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-gold);
+            color: var(--dark-blue);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-ship"></i>
+                <h2>Kemada Sayohat</h2>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Bosh sahifa</a></li>
+                <li><a href="#stats" class="nav-link">Statistika</a></li>
+                <li><a href="#fleet" class="nav-link">Kema floti</a></li>
+                <li><a href="#pricing" class="nav-link">Narxlar</a></li>
+                <li><a href="#contact" class="nav-link">Bron qilish</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Dengiz Sarguzashtingizni Boshlang</h1>
+            <p class="hero-subtitle">Premium kemalarimizda unutilmas sayohatlar va dengiz romantikasi</p>
+            
+            <div class="cta-buttons">
+                <button class="cta-button primary" onclick="scrollToBooking()">
+                    <i class="fas fa-calendar-check"></i>Bron qilish
+                </button>
+                <button class="cta-button secondary" onclick="showShips()">
+                    <i class="fas fa-ship"></i>Kemalarni ko'rish
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <h2 class="section-title">Bizning Ko'rsatkichlar</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="stat1">1250</div>
+                    <div class="stat-label">Mamnun Mijozlar</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat2">890</div>
+                    <div class="stat-label">Muvaffaqiyatli Safari</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat3">15</div>
+                    <div class="stat-label">Premium Kemalar</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat4">8</div>
+                    <div class="stat-label">Ish Tajribasi (yil)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="fleet">
+        <div class="container">
+            <h2 class="section-title">Premium Kema Floti</h2>
+            <div class="fleet-container" id="fleet-container">
+                <!-- JavaScript will load ships here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Takliflar va Narxlar</h2>
+            <div class="pricing-cards" id="pricing-cards">
+                <!-- JavaScript will load prices here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Bron Qilish</h2>
+            <form class="booking-form" id="booking-form">
+                <div class="form-group">
+                    <label for="name">Ismingiz</label>
+                    <input type="text" id="name" placeholder="To'liq ismingiz" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email manzil</label>
+                    <input type="email" id="email" placeholder="siz@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefon raqam</label>
+                    <input type="tel" id="phone" placeholder="+998 90 123 45 67">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ship-select">Kemani tanlang</label>
+                    <select id="ship-select" required>
+                        <option value="">Kemani tanlang</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Sana</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="people">Mehmonlar soni</label>
+                    <input type="number" id="people" placeholder="Necha kishi" min="1" max="20" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Bron qilish
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Kemada Sayohat</h4>
+                    <p>Premium dengiz safarlari va unutilmas sarguzashtlar uchun eng yaxshi manba.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Xizmatlar</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Premium Yacht ijarasi</a></li>
+                        <li><a href="#">Romantik Kruizlar</a></li>
+                        <li><a href="#">Oilaviy Safari</a></li>
+                        <li><a href="#">Korporativ Tadbirlar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Bog'lanish</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Dengiz ko'chasi 123, Samarqand</p>
+                    <p><i class="fas fa-phone"></i> +998 90 123 45 67</p>
+                    <p><i class="fas fa-envelope"></i> info@kemadasayohat.uz</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kemada Sayohat. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Ma'lumotlar
+        const fleetData = {
+            "ships": [
+                {
+                    "id": 1,
+                    "name": "Yacht Premium",
+                    "type": "Luxury Yacht",
+                    "capacity": 10,
+                    "price": "500,000",
+                    "icon": "🛥️",
+                    "features": ["A/C", "Bar", "Musiqa", "Baliq ovlash"]
+                },
+                {
+                    "id": 2,
+                    "name": "Speed Boat",
+                    "type": "Tezkema",
+                    "capacity": 6,
+                    "price": "300,000",
+                    "icon": "🚤",
+                    "features": ["Tez", "Qulay", "Ekstremal", "Foto-sessiya"]
+                },
+                {
+                    "id": 3,
+                    "name": "Family Boat",
+                    "type": "Oila kemasi",
+                    "capacity": 8,
+                    "price": "400,000",
+                    "icon": "⛵",
+                    "features": ["Bolalar uchun", "Oshxona", "Hojatxona", "Kulgu"]
+                }
+            ],
+            "pricing": [
+                {
+                    "type": "1 soatlik sayohat",
+                    "price": "250,000 - 500,000",
+                    "features": ["Dengiz havosi", "Foto-sessiya", "Sovuq ichimliklar"]
+                },
+                {
+                    "type": "3 soatlik sayohat",
+                    "price": "600,000 - 1,200,000",
+                    "features": ["Qiziqarli hikoyalar", "Tarixiy joylar", "Nonushta"]
+                },
+                {
+                    "type": "Kunlik ijarа",
+                    "price": "1,500,000 - 3,000,000",
+                    "features": ["Maxsus oshpaz", "Baliq ovlash", "Shoʻngʻish"]
+                }
+            ]
+        };
+
+        // Load fleet data
+        function loadFleet() {
+            const fleetContainer = document.getElementById('fleet-container');
+            const shipSelect = document.getElementById('ship-select');
+            
+            fleetData.ships.forEach(ship => {
+                // Kema kartalari
+                const shipCard = document.createElement('div');
+                shipCard.className = 'ship-card';
+                shipCard.innerHTML = `
+                    <div class="ship-icon">${ship.icon}</div>
+                    <h3>${ship.name}</h3>
+                    <p>${ship.type}</p>
+                    <p>Sig'im: ${ship.capacity} kishi</p>
+                    <p>Narx: ${ship.price} so'm / soat</p>
+                    <p>${ship.features.join(', ')}</p>
+                `;
+                fleetContainer.appendChild(shipCard);
+
+                // Select option
+                const option = document.createElement('option');
+                option.value = ship.id;
+                option.textContent = `${ship.name} - ${ship.price} so'm/soat`;
+                shipSelect.appendChild(option);
+            });
+        }
+
+        // Load pricing data
+        function loadPricing() {
+            const pricingContainer = document.getElementById('pricing-cards');
+            
+            fleetData.pricing.forEach(price => {
+                const priceCard = document.createElement('div');
+                priceCard.className = 'price-card';
+                priceCard.innerHTML = `
+                    <h3>${price.type}</h3>
+                    <div class="price-amount">${price.price}</div>
+                    <p>${price.features.join(', ')}</p>
+                `;
+                pricingContainer.appendChild(priceCard);
+            });
+        }
+
+        // Scroll to booking function
+        function scrollToBooking() {
+            document.getElementById('contact').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function showShips() {
+            document.getElementById('fleet').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Form submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Bron qilingan! Tez orada siz bilan bog\'lanamiz.');
+            this.reset();
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFleet();
+            loadPricing();
+        });
+    </script>
+</body>
+</html>
